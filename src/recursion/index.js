@@ -1,3 +1,5 @@
+import { head, tail } from '../util';
+
 export const factorial = n => (
   n === 1
     ? 1
@@ -10,8 +12,8 @@ export const tailFactorial = (n, current = 1) => (
     : tailFactorial(n - 1, current * n)
 );
 
-export const tailSum = (ary, acc = 0) => (
-  ary.length === 0
+export const tailSum = (xs, acc = 0) => (
+  xs.length === 0
     ? acc
-    : tailSum(ary.slice(1), acc + ary[0])
+    : tailSum(tail(xs), acc + head(xs))
 );

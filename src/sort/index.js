@@ -1,9 +1,4 @@
-function tail(xs) {
-  return (!xs || xs.length === 0) ? [] : xs.slice(1);
-}
-// const tail = xs => (!xs || xs.length === 0) ? [] : xs.slice(1);
-
-const head = xs => xs[0];
+import { head, tail } from '../util';
 
 const quickSort = (xs) => {
   if (xs.length <= 1) {
