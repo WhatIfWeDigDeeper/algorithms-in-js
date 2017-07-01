@@ -1,9 +1,8 @@
-import { quicksort } from './index';
+import quickSort from './index';
 
-describe('quicksort', () => {
+describe('quickSort', () => {
   test('quick', () => {
     expect(
-      quicksort([3, 4, 2])
-    ).toEqual([2, 3, 4]);
-  })
+      quickSort([3, 4, 2])).toEqual([2, 3, 4]);
+  });
 });
