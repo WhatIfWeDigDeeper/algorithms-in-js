@@ -1,4 +1,4 @@
-import { head, tail, range } from '../util';
+import { head, tail, range, replicate } from '../util';
 
 describe('util', () => {
   describe('head', () => {
@@ -26,6 +26,11 @@ describe('util', () => {
     });
     test('0 should return empty array', () => {
       expect(range(0)).toEqual([]);
+    });
+  });
+  describe('replicate', () => {
+    test('replicate should replicate value n times', () => {
+      expect(replicate('a', 3)).toEqual(['a', 'a', 'a']);
     });
   });
 });

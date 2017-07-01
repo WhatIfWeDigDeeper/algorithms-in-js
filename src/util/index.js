@@ -9,3 +9,5 @@ export const range = (end, start = 1, xs = []) => (
     ? xs
     : range(end, start + 1, xs.concat([start]))
 );
+
+export const replicate = (val, n) => (new Array(n).fill(val));
