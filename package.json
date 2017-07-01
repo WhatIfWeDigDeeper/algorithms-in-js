@@ -1,0 +1,25 @@
+{
+  "name": "algo-js",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "jest": "^20.0.4"
+  },
+  "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.6.1",
+    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
+    "regenerator-runtime": "^0.10.5"
+  },
+  "scripts": {
+    "test": "jest --watch",
+    "lint": "eslint src/**"
+  }
+}
