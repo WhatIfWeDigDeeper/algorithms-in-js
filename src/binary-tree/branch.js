@@ -69,4 +69,12 @@ export const traverse = (branch) => {
   return [].concat(branch.node()).concat(traverse(branch.left())).concat(traverse(branch.right()));
 };
 
+export const traverseAcc = (branch, acc = []) => {
+  if (branch.isLeaf()) {
+    return acc;
+  }
+  return [].concat(branch.node())
+    .concat(traverseAcc(branch.left(), traverseAcc(branch.right(), acc)));
+};
+
 export default Branch;

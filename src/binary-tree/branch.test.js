@@ -1,4 +1,4 @@
-import Branch, { Node, buildTree, traverse } from './branch';
+import Branch, { Node, buildTree, traverse, traverseAcc } from './branch';
 
 describe('binary tree', () => {
   describe('Branch', () => {
@@ -19,6 +19,7 @@ describe('binary tree', () => {
       console.log(tree);
       expect(tree.left().node().value).toEqual(2);
       console.log(traverse(tree));
+      console.log(traverseAcc(tree));
     });
   });
 });
