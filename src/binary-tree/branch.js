@@ -4,10 +4,6 @@ export const Node = class {
   constructor(key, val) {
     this.key = Object.freeze(key);
     this.value = Object.freeze(val);
-    this.isLeaf = Object.freeze(false);
-  }
-  isLeaf() {
-    return this.isLeaf;
   }
 };
 
@@ -45,20 +41,13 @@ class Branch {
 
 export const buildTree = (list) => {
   if (list.length === 0) {
-    console.log('leaf');
     return new Leaf();
   }
-  console.log(`list: ${list}`);
   const x = head(list);
-  console.log(`x: ${x}`);
   const xs = tail(list);
-  console.log(`xs: ${xs}`);
   const k = Math.floor(xs.length / 2);
-  console.log(`k: ${k}`);
   const first = take(k, xs);
-  console.log(`first: ${first}`);
   const last = skip(k, xs);
-  console.log(`last: ${last}`);
   return new Branch(new Node(x, x), buildTree(first), buildTree(last));
 };
 
