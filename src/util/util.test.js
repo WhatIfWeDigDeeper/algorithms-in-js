@@ -1,4 +1,4 @@
-import { head, tail, range, replicate } from '../util';
+import { head, tail, range, replicate, take, skip } from '../util';
 
 describe('util', () => {
   describe('head', () => {
@@ -31,6 +31,22 @@ describe('util', () => {
   describe('replicate', () => {
     test('replicate should replicate value n times', () => {
       expect(replicate('a', 3)).toEqual(['a', 'a', 'a']);
+    });
+  });
+  describe('take', () => {
+    test('take should grab first n entries', () => {
+      expect(take(3, [1, 2, 3, 4])).toEqual([1, 2, 3]);
+    });
+    test('take return [] when greater than length', () => {
+      expect(take(5, [1, 2, 3, 4])).toEqual([]);
+    });
+  });
+  describe('skip', () => {
+    test('skip should grab last n entries', () => {
+      expect(skip(2, [1, 2, 3, 4])).toEqual([3, 4]);
+    });
+    test('skip return [] when greater than length', () => {
+      expect(skip(5, [1, 2, 3, 4])).toEqual([]);
     });
   });
 });
