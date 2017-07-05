@@ -25,7 +25,6 @@ export const partition = (ary) => {
       item2: ary.slice(ary.length/2)};
 }
 
-// [1, 4], [3]
 export const merge = (ls1, ls2) => {
   if (!isEmpty(ls1) && isEmpty(ls2)){
     return ls1;
@@ -33,13 +32,23 @@ export const merge = (ls1, ls2) => {
   if (isEmpty(ls1) && !isEmpty(ls2)){
     return ls2;
   }
-  const x = head(ls1); // 1
-  const xs = tail(ls1); // 4
-  const y = head(ls2); // 3
-  const ys = tail(ls2); //
-  return (x > y) 
+  const x = head(ls1);
+  const xs = tail(ls1);
+  const y = head(ls2);
+  const ys = tail(ls2);
+  return (x > y)
     ? [y].concat(merge(ls1, ys))
     : [x].concat(merge(xs, ls2));
 }
 
-// export default mergeSort;
+const mergeSort = (ls) => {
+  if (isEmpty(ls) || isEmpty(tail(ls))) {
+    return ls;
+  }
+  const { item1, item2 } = split(ls);
+  const ls1 = mergeSort(item1);
+  const ls2 = mergeSort(item2);
+  return merge(ls1, ls2);
+}
+
+export default mergeSort;

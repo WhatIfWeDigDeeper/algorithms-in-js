@@ -1,4 +1,4 @@
-import { split, partition, merge } from './mergeSort';
+import mergeSort, { split, partition, merge } from './mergeSort';
 
 describe('mergeSort', () => {
 
@@ -86,4 +86,20 @@ describe('mergeSort', () => {
         merge([1, 4, 5], [2, 3])).toEqual([1, 2, 3, 4, 5]);
     });
   })
+
+  describe('mergeSort', () => {
+    test('should mergeSort unsorted array', () => {
+      expect(
+        mergeSort([4, 3])).toEqual([3, 4]);
+    });
+    test('should mergeSort two sorted arrays', () => {
+      expect(
+        mergeSort([1, 4, 3])).toEqual([1, 3, 4]);
+    });
+    test('should mergeSort two sorted arrays', () => {
+      expect(
+        mergeSort([1, 4, 5, 2, 3])).toEqual([1, 2, 3, 4, 5]);
+    });
+  })
+
 });
