@@ -15,3 +15,5 @@ export const replicate = (val, n) => (new Array(n).fill(val));
 export const take = (n, xs) => (xs && xs.length >= n) ? xs.slice(0, n) : [];
 
 export const skip = (n, xs) => (xs && xs.length >= n) ? xs.slice(n) : [];
+
+export const isEmpty = (xs) => (!xs || xs.length === 0);

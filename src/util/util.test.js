@@ -1,4 +1,12 @@
-import { head, tail, range, replicate, take, skip } from '../util';
+import {
+  head,
+  isEmpty,
+  tail,
+  range,
+  replicate,
+  take,
+  skip
+} from '../util';
 
 describe('util', () => {
   describe('head', () => {
@@ -47,6 +55,18 @@ describe('util', () => {
     });
     test('skip return [] when greater than length', () => {
       expect(skip(5, [1, 2, 3, 4])).toEqual([]);
+    });
+  });
+
+  describe('isEmpty', () => {
+    test('isEmpty should return false for populated array', () => {
+      expect(isEmpty([1, 2, 3, 4])).toEqual(false);
+    });
+    test('isEmpty return true when length 0', () => {
+      expect(isEmpty([])).toEqual(true);
+    });
+    test('isEmpty return true when length 0', () => {
+      expect(isEmpty(undefined)).toEqual(true);
     });
   });
 });
