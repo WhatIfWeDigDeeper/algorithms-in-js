@@ -5,7 +5,7 @@ import {
   range,
   replicate,
   take,
-  skip
+  skip,
 } from '../util';
 
 describe('util', () => {

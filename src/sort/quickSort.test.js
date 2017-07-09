@@ -1,4 +1,4 @@
-import quickSort from './index';
+import quickSort from './quickSort';
 
 describe('quickSort', () => {
   test('should sort array', () => {

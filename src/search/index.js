@@ -25,17 +25,17 @@ export const binarySearch = (list, item, compareFn) => {
   return null;
 };
 
-export const binarySearchRecursive = (list, item, compareFn, low = 0, high = Infinity) => {
+export const binarySearchRecursive = (list, searchItem, compareFn, low = 0, high = Infinity) => {
   const top = (high === Infinity) ? list.length - 1 : high;
   if (low > top) {
     return null;
   }
   const mid = Math.floor(low + ((top - low) / 2));
-  const compareResult = compareFn(item, list[mid]);
+  const compareResult = compareFn(searchItem, list[mid]);
   if (compareResult === 0) {
     return mid;
   }
   return (compareResult > 0)
-    ? binarySearchRecursive(list, item, compareFn, mid + 1, top)
-    : binarySearchRecursive(list, item, compareFn, low, mid - 1);
+    ? binarySearchRecursive(list, searchItem, compareFn, mid + 1, top)
+    : binarySearchRecursive(list, searchItem, compareFn, low, mid - 1);
 };

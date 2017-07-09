@@ -1,23 +1,4 @@
-// const breadthFirstSearchOriginal = (graph, predicate, name) => {
-//   let searchQueue = [];
-//   searchQueue = searchQueue.concat(graph[name]);
-//   // This array is how you keep track of which people you've searched before.
-//   const searched = [];
-//   while (searchQueue.length) {
-//     let item = searchQueue.shift();
-//     // Only search this item if you haven't already searched them
-//     if (searched.indexOf(item) === -1) {
-//       if (predicate(item)) {
-//         return item;
-//       } else {
-//         searchQueue = searchQueue.concat(graph[item]);
-//         // Marks this item as searched
-//         searched.push(item);
-//       }
-//     }
-//   }
-//   return null;
-// }
+import { head, tail, isEmpty } from '../util';
 
 const breadthFirstSearch = (graph, predicate, name) => {
   let searchQueue = [];
@@ -25,44 +6,41 @@ const breadthFirstSearch = (graph, predicate, name) => {
   // This array is how you keep track of which people you've searched before.
   const searched = new Set();
   while (searchQueue.length) {
-    const head = searchQueue.shift();
-    // Only search this head if you haven't already searched them
+    const first = searchQueue.shift();
+    // Only search this first if you haven't already searched them
     // eslint-disable-next-line no-continue
-    if (searched.has(head)) continue;
+    if (searched.has(first)) continue;
 
-    if (predicate(head)) {
-      return head;
+    if (predicate(first)) {
+      return first;
     }
 
-    searchQueue = searchQueue.concat(graph[head]);
-    // Marks this head as searched
-    searched.add(head);
+    searchQueue = searchQueue.concat(graph[first]);
+    // Marks this first as searched
+    searched.add(first);
   }
   return null;
 };
 
-const breadthSearchInternal = (graph, searchQueue, predicate, searched) => {
-  if (searchQueue.length === 0) {
+const bfSearchRecursive = (graph, predicate, searchQ, seen) => {
+  if (isEmpty(searchQ)) {
     return null;
   }
-  const head = searchQueue.shift();
-  // Only search this head if you haven't already searched them
-  if (searched.has(head)) {
-    return breadthSearchInternal(graph, searchQueue, predicate, searched);
+  const x = head(searchQ);
+  if (predicate(x)) {
+    return x;
   }
-  if (predicate(head)) {
-    return head;
+  const searchQTail = tail(searchQ);
+  if (seen.has(x)) {
+    return bfSearchRecursive(graph, predicate, searchQTail, seen);
   }
-  const newSearchQueue = searchQueue.concat(graph[head]);
-  // Marks this head as searched
-  searched.add(head);
-  return breadthSearchInternal(graph, newSearchQueue, predicate, searched);
+  seen.add(x);
+  return bfSearchRecursive(graph, predicate, graph[x].concat(searchQTail), seen);
 };
 
-export const breadthFirstSearchRecursive = (graph, predicate, name) => {
-  const searched = new Set();
-  const searchQueue = [].concat(graph[name]);
-  return breadthSearchInternal(graph, searchQueue, predicate, searched);
-};
+export const breadthFirstSearchRecursive = (graph, predicate, node) => (
+  bfSearchRecursive(graph, predicate, graph[node], new Set())
+);
+
 
 export default breadthFirstSearch;
