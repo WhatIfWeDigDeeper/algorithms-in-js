@@ -19,10 +19,12 @@ export const partition = (ary) => {
   if (isEmpty(ary)) {
     return { item1: [], item2: [] };
   }
-  return (ary.length === 1)
+  return ary.length === 1
     ? { item1: ary, item2: [] }
-    : { item1: ary.slice(0, ary.length / 2),
-      item2: ary.slice(ary.length / 2) };
+    : {
+      item1: ary.slice(0, ary.length / 2),
+      item2: ary.slice(ary.length / 2),
+    };
 };
 
 export const merge = (ls1, ls2) => {
@@ -36,9 +38,7 @@ export const merge = (ls1, ls2) => {
   const xs = tail(ls1);
   const y = head(ls2);
   const ys = tail(ls2);
-  return (x > y)
-    ? [y].concat(merge(ls1, ys))
-    : [x].concat(merge(xs, ls2));
+  return x > y ? [y].concat(merge(ls1, ys)) : [x].concat(merge(xs, ls2));
 };
 
 const mergeSort = (ls) => {

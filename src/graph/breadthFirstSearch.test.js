@@ -16,14 +16,10 @@ describe('breadthFirstSearch', () => {
   graph.jonny = [];
 
   test('breadthFirstSearch', () => {
-    expect(
-      breadthFirstSearch(graph, itemIsSeller, 'you'),
-    ).toBe('thom');
+    expect(breadthFirstSearch(graph, itemIsSeller, 'you')).toBe('thom');
   });
 
   test('breadthFirstSearchRecursive', () => {
-    expect(
-      breadthFirstSearchRecursive(graph, itemIsSeller, 'you'),
-    ).toBe('thom');
+    expect(breadthFirstSearchRecursive(graph, itemIsSeller, 'you')).toBe('thom');
   });
 });

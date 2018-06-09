@@ -1,7 +1,4 @@
-import { factorial,
-  tailFactorial,
-  tailSum,
-} from './index';
+import { factorial, tailFactorial, tailSum } from './index';
 
 describe('factorial', () => {
   test('recursive', () => {

@@ -8,9 +8,8 @@ const quickSort = (ls) => {
   const pivot = head(ls);
   const xs = tail(ls);
   return quickSort(xs.filter(x => x <= pivot))
-          .concat([pivot])
-          .concat(quickSort(xs.filter(y => y > pivot)));
+    .concat([pivot])
+    .concat(quickSort(xs.filter(y => y > pivot)));
 };
 
 export default quickSort;
-
